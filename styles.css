@@ -239,7 +239,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 
 /* ---------- full-bleed ---------- */
 .bleed { height: clamp(360px, 70vh, 760px); overflow: hidden; }
-.bleed img { width: 100%; height: 125%; object-fit: cover; object-position: 50% 30%; will-change: transform; }
+.bleed img { width: 100%; height: 125%; object-fit: cover; object-position: 50% 45%; will-change: transform; }
 
 /* ---------- lineup ---------- */
 .lineup {
@@ -691,4 +691,39 @@ a.roll:hover > span, a.roll:focus-visible > span { transform: translateY(calc(-1
   .curve-top { transform: none; }
   .menu li a { transform: none; }
   .loader { display: none; }
+}
+
+/* =========================================================
+   MASCOT (inline SVG, see main.js)
+   ========================================================= */
+[data-mascot] { display: block; }
+[data-mascot] > svg.mascot { display: block; width: 100%; height: 100%; overflow: visible; }
+.sticker-mascot, .loader-mascot, .lineup-mascot { border-radius: 50%; }
+
+/* blink: lids drop over the eyes, lash line follows */
+.mascot .m-lid { transform-box: fill-box; transform-origin: 50% 0; transition: transform .07s ease-in; }
+.mascot .m-lashes { transition: transform .07s ease-in; }
+.mascot.blink .m-lid { transform: scaleY(2.4); }
+.mascot.blink .m-lashes { transform: translateY(84px); }
+
+/* lineup sticker */
+.lineup-mascot {
+  position: absolute; right: -3%; bottom: 3%; z-index: 4;
+  width: 24%; aspect-ratio: 1;
+  rotate: 8deg;
+  box-shadow: 0 10px 22px rgba(54,1,15,.25);
+  transition: scale .35s var(--spring);
+}
+.lineup-mascot:hover { scale: 1.1; }
+.lineup-mascot.hop { animation: hop .7s var(--spring); }
+@keyframes hop {
+  0% { translate: 0 0; scale: 1 1; }
+  25% { translate: 0 -24%; scale: .94 1.08; }
+  55% { translate: 0 0; scale: 1.08 .92; }
+  75% { translate: 0 -6%; scale: 1 1; }
+  100% { translate: 0 0; scale: 1 1; }
+}
+
+@media (max-width: 640px) {
+  .lineup-mascot { top: 0; bottom: auto; right: -4%; width: 22%; }
 }

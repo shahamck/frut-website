@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 615 615" role="img" aria-label="FRŪT mascot">
+  <defs>
+    <clipPath id="m-badge"><circle cx="307.5" cy="307.5" r="307.5"/></clipPath>
+    <clipPath id="m-eyeL"><ellipse cx="221" cy="217" rx="57" ry="73"/></clipPath>
+    <clipPath id="m-eyeR"><ellipse cx="391" cy="217" rx="57" ry="73"/></clipPath>
+  </defs>
+  <g clip-path="url(#m-badge)">
+    <!-- badge -->
+    <rect width="615" height="615" fill="#ED553E"/>
+    <!-- body: popsicle-shaped blob, sides flaring slightly outward -->
+    <path class="m-body" fill="#FEB7D9" d="M172 198 H440 Q498 198 499 258 L524 640 H90 L113 258 Q114 198 172 198 Z"/>
+    <!-- eyes -->
+    <g class="m-eye m-eye-l">
+      <ellipse cx="221" cy="217" rx="57" ry="73" fill="#fff"/>
+      <g clip-path="url(#m-eyeL)">
+        <g class="m-pupil"><ellipse cx="193.5" cy="220" rx="18" ry="24.5" fill="#111"/><ellipse cx="205.5" cy="232" rx="4.2" ry="8.5" transform="rotate(-18 205.5 232)" fill="#fff"/></g>
+        <rect class="m-lid" x="150" y="130" width="150" height="68" fill="#FEB7D9"/>
+      </g>
+    </g>
+    <g class="m-eye m-eye-r">
+      <ellipse cx="391" cy="217" rx="57" ry="73" fill="#fff"/>
+      <g clip-path="url(#m-eyeR)">
+        <g class="m-pupil"><ellipse cx="366.5" cy="220" rx="18" ry="24.5" fill="#111"/><ellipse cx="378.5" cy="232" rx="4.2" ry="8.5" transform="rotate(-18 378.5 232)" fill="#fff"/></g>
+        <rect class="m-lid" x="320" y="130" width="150" height="68" fill="#FEB7D9"/>
+      </g>
+    </g>
+    <!-- lid lines + lashes -->
+    <g class="m-lashes" fill="none" stroke="#111" stroke-width="4" stroke-linecap="round">
+      <path d="M278 198 H168 Q130 196 102 188"/>
+      <path d="M166 199 Q140 201 120 202"/>
+      <path d="M334 198 H444 Q482 196 510 188"/>
+      <path d="M446 199 Q472 201 492 202"/>
+    </g>
+    <!-- smile with a little curl at the end -->
+    <g fill="none" stroke="#111" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round">
+      <path class="m-smile" d="M304 332 C318 346 338 348 350 333 Q357 322 361 310"/>
+      <path d="M352 311 Q360 307 368 311"/>
+    </g>
+  </g>
+</svg>

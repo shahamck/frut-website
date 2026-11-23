@@ -210,6 +210,105 @@
   };
   requestAnimationFrame(frame);
 
+  /* ---------- mascot: inline SVG instances that blink and watch the pointer ---------- */
+  const mascotSVG = (id, peek) => `
+    <defs>
+      <clipPath id="${id}-eL"><ellipse cx="221" cy="217" rx="57" ry="73"/></clipPath>
+      <clipPath id="${id}-eR"><ellipse cx="391" cy="217" rx="57" ry="73"/></clipPath>
+      ${peek ? '' : `<clipPath id="${id}-b"><circle cx="307.5" cy="307.5" r="307.5"/></clipPath>`}
+    </defs>
+    <g ${peek ? '' : `clip-path="url(#${id}-b)"`}>
+      ${peek ? '' : '<rect width="615" height="615" fill="#ED553E"/>'}
+      <path fill="#FEB7D9" d="M172 198 H440 Q498 198 499 258 L524 640 H90 L113 258 Q114 198 172 198 Z"/>
+      <ellipse cx="221" cy="217" rx="57" ry="73" fill="#fff"/>
+      <ellipse cx="391" cy="217" rx="57" ry="73" fill="#fff"/>
+      <g clip-path="url(#${id}-eL)">
+        <g class="m-pupil"><ellipse cx="193.5" cy="220" rx="18" ry="24.5" fill="#111"/><ellipse cx="205.5" cy="232" rx="4.2" ry="8.5" transform="rotate(-18 205.5 232)" fill="#fff"/></g>
+        <rect class="m-lid" x="150" y="130" width="150" height="68" fill="#FEB7D9"/>
+      </g>
+      <g clip-path="url(#${id}-eR)">
+        <g class="m-pupil"><ellipse cx="366.5" cy="220" rx="18" ry="24.5" fill="#111"/><ellipse cx="378.5" cy="232" rx="4.2" ry="8.5" transform="rotate(-18 378.5 232)" fill="#fff"/></g>
+        <rect class="m-lid" x="320" y="130" width="150" height="68" fill="#FEB7D9"/>
+      </g>
+      <g class="m-lashes" fill="none" stroke="#111" stroke-width="4" stroke-linecap="round">
+        <path d="M278 198 H168 Q130 196 102 188"/><path d="M166 199 Q140 201 120 202"/>
+        <path d="M334 198 H444 Q482 196 510 188"/><path d="M446 199 Q472 201 492 202"/>
+      </g>
+      <g fill="none" stroke="#111" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M304 332 C318 346 338 348 350 333 Q357 322 361 310"/><path d="M352 311 Q360 307 368 311"/>
+      </g>
+    </g>`;
+
+  const svgNS = 'http://www.w3.org/2000/svg';
+  const mascots = $$('[data-mascot]').map((host, n) => {
+    const peek = false;
+    let svg = host;
+    if (host.namespaceURI !== svgNS) {
+      svg = document.createElementNS(svgNS, 'svg');
+      svg.setAttribute('aria-hidden', 'true');
+      host.appendChild(svg);
+    }
+    svg.setAttribute('viewBox', peek ? '80 120 460 330' : '0 0 615 615');
+    svg.classList.add('mascot');
+    svg.innerHTML = mascotSVG(`m${n}`, peek);
+    return { host, svg, pupils: $$('.m-pupil', svg), x: 0, y: 0, tx: 0, ty: 0, look: null, t: 0 };
+  });
+
+  // blinking: each mascot on its own random rhythm, sometimes a double blink
+  const blink = (m) => {
+    m.svg.classList.add('blink');
+    setTimeout(() => m.svg.classList.remove('blink'), 140);
+  };
+  if (!reduce) {
+    mascots.forEach((m) => {
+      const loop = () => {
+        blink(m);
+        if (Math.random() < 0.25) setTimeout(() => blink(m), 260);
+        setTimeout(loop, 2200 + Math.random() * 3800);
+      };
+      setTimeout(loop, 800 + Math.random() * 2500);
+    });
+  }
+
+  // eyes follow the mouse; with no recent movement they drift back to the original side-eye
+  let ptrX = null, ptrY = null, lastMove = 0;
+  addEventListener('pointermove', (e) => {
+    if (e.pointerType !== 'mouse') return;
+    ptrX = e.clientX; ptrY = e.clientY; lastMove = performance.now();
+  }, { passive: true });
+  const tickEyes = () => {
+    const idle = ptrX === null || performance.now() - lastMove > 3500;
+    mascots.forEach((m) => {
+      if (m.look !== null) { m.tx = m.look; m.ty = 0; }
+      else if (idle) { m.tx = 0; m.ty = 0; }
+      else {
+        const r = m.svg.getBoundingClientRect();
+        if (r.bottom < 0 || r.top > innerHeight) return;
+        const dx = ptrX - (r.left + r.width / 2), dy = ptrY - (r.top + r.height * 0.36);
+        const d = Math.hypot(dx, dy) || 1, k = Math.min(1, d / 260);
+        // pupils rest 27 units left of the eye centre; aim them at the pointer
+        m.tx = 27 + (dx / d) * 30 * k;
+        m.ty = (dy / d) * 22 * k;
+      }
+      m.x = lerp(m.x, m.tx, 0.18); m.y = lerp(m.y, m.ty, 0.18);
+      const tr = `translate(${m.x.toFixed(1)} ${m.y.toFixed(1)})`;
+      m.pupils.forEach((g) => g.setAttribute('transform', tr));
+    });
+    requestAnimationFrame(tickEyes);
+  };
+  if (!reduce) requestAnimationFrame(tickEyes);
+
+  // lineup mascot hops and glances toward the new flavour
+  const lineupMascot = mascots.find((m) => m.host.classList.contains('lineup-mascot'));
+  const mascotReact = (dir) => {
+    if (!lineupMascot || reduce) return;
+    lineupMascot.look = dir > 0 ? 52 : -6;
+    replay(lineupMascot.host, 'hop');
+    blink(lineupMascot);
+    clearTimeout(lineupMascot.t);
+    lineupMascot.t = setTimeout(() => { lineupMascot.look = null; }, 900);
+  };
+
   /* ---------- flavour lineup ---------- */
   const flavours = [
     { name: 'Strawberry', img: 'strawberry-close.jpg', bg: '#FEB7D9',
@@ -271,6 +370,7 @@
     i = (k + flavours.length) % flavours.length;
     if (reduce) return render(false);
     // the flower outline spins a quarter turn (it has 4-fold symmetry); the photo counter-rotates to stay upright
+    mascotReact(dir);
     spin += 90 * dir;
     flower.style.rotate = `${spin}deg`;
     img.style.rotate = `${-spin}deg`;

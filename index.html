@@ -6,18 +6,20 @@
 <title>FRŪT — Real Fruit. Nothing Else.</title>
 <meta name="description" content="FRŪT is the modern frozen dessert from Ahmedabad. Real-fruit popsicles: 80% fruit based, refined sugar free, vegan.">
 <meta name="theme-color" content="#FEF4E8">
-<link rel="icon" href="assets/img/mascot.jpg">
+<link rel="icon" type="image/svg+xml" href="assets/mascot.svg">
+<link rel="alternate icon" type="image/png" href="assets/img/mascot-32.png">
+<link rel="apple-touch-icon" href="assets/img/mascot-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Schibsted+Grotesk:wght@400..800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=6">
+<link rel="stylesheet" href="styles.css?v=10">
 <script>try{if(sessionStorage.getItem("frut-intro")||matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("no-intro")}catch(e){}</script>
 </head>
 <body>
 
 <div class="loader" id="loader" aria-hidden="true">
   <div class="loader-inner">
-    <img class="loader-mascot" src="assets/img/mascot.jpg" alt="">
+    <span class="loader-mascot" data-mascot></span>
     <span class="logo loader-logo"></span>
     <span class="loader-line">Real fruit. Nothing else.</span>
   </div>
@@ -66,7 +68,7 @@
         freeze it.
       </h1>
       <p class="hero-sub reveal">FRŪT — the modern frozen dessert.<br>80% fruit based. Refined sugar free. Vegan.<br>Rolling around Ahmedabad.</p>
-      <img class="sticker sticker-mascot float" src="assets/img/mascot.jpg" alt="FRŪT mascot">
+      <span class="sticker sticker-mascot float" data-mascot role="img" aria-label="FRŪT mascot"></span>
       <span class="tag tag-yellow float-slow" style="--r:-12deg">100% real.<br>0% BS.</span>
     </div>
     <figure class="hero-media img-reveal">
@@ -106,7 +108,7 @@
 
   <!-- full-bleed photo -->
   <figure class="bleed img-reveal">
-    <img src="assets/img/guava-bite.jpg" alt="Someone biting into a FRŪT popsicle on a sunny terrace" data-parallax>
+    <img src="assets/img/popsicle-rows.jpg" alt="Rows of colourful fruit popsicles lined up in a display case" data-parallax>
   </figure>
 
   <!-- 03 LINEUP -->
@@ -115,6 +117,7 @@
     <div class="lineup-stage">
       <button class="side side-prev" id="prevSide" aria-label="Previous flavour"><img alt=""></button>
       <div class="lineup-main">
+        <span class="lineup-mascot" data-mascot aria-hidden="true"></span>
         <div class="flower"><img id="lineImg" alt=""></div>
         <span class="tag tag-yellow lineup-label" id="lineName" style="--r:-8deg">Strawberry</span>
         <button class="arrow arrow-l" id="prevBtn" aria-label="Previous flavour">←</button>
@@ -178,13 +181,12 @@
             <mask id="routeMask" maskUnits="userSpaceOnUse" x="-20" y="-20" width="440" height="340">
               <path class="route-draw" d="M30 250 C 90 120, 170 260, 220 150 S 330 40, 370 70" fill="none" stroke="#fff" stroke-width="14" pathLength="1"/>
             </mask>
-            <clipPath id="pinClip"><circle r="30"/></clipPath>
           </defs>
           <path id="routePath" d="M30 250 C 90 120, 170 260, 220 150 S 330 40, 370 70" fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="2 12" stroke-linecap="round" mask="url(#routeMask)"/>
           <circle cx="30" cy="250" r="9" fill="currentColor"/>
           <circle class="route-end" cx="370" cy="70" r="40" fill="none" stroke="currentColor" stroke-width="1.5"/>
           <g class="route-pin" id="routePin">
-            <image href="assets/img/mascot.jpg" x="-30" y="-30" width="60" height="60" clip-path="url(#pinClip)"/>
+            <svg class="route-mascot" x="-30" y="-30" width="60" height="60" data-mascot></svg>
             <animateMotion id="routeMotion" dur="2.4s" begin="indefinite" fill="freeze" calcMode="spline" keyPoints="0;1" keyTimes="0;1" keySplines=".5 0 .2 1"><mpath href="#routePath"/></animateMotion>
           </g>
         </svg>
@@ -242,11 +244,11 @@
   </form>
   <div class="footer-bottom">
     <span>© 2026 FRŪT. All rights reserved.</span>
-    <span>Ahmedabad, India &nbsp;·&nbsp; Hero photo: <a href="https://unsplash.com/photos/a-pile-of-fresh-ripe-strawberries-with-green-leaves-Ztd6qEfqrZ0" target="_blank" rel="noopener">Ioana Cristiana / Unsplash</a></span>
+    <span>Ahmedabad, India &nbsp;·&nbsp; Photos: <a href="https://unsplash.com/photos/a-pile-of-fresh-ripe-strawberries-with-green-leaves-Ztd6qEfqrZ0" target="_blank" rel="noopener">Ioana Cristiana</a>, <a href="https://unsplash.com/photos/rows-of-colorful-popsicles-arranged-neatly-xVXOdb9ic-U" target="_blank" rel="noopener">Sui Xu</a> / Unsplash</span>
     <a href="#top">Back to top ↑</a>
   </div>
 </footer>
 
-<script src="main.js?v=6"></script>
+<script src="main.js?v=10"></script>
 </body>
 </html>
