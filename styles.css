@@ -198,7 +198,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .sticker-mascot { width: 92px; height: 92px; top: 18%; left: 8%; }
 .hero-copy .tag-yellow { bottom: 16%; right: 9%; font-size: 22px; }
 .hero-media { position: relative; overflow: hidden; }
-.hero-media img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 55%; }
+.hero-media img { width: 100%; height: 100%; object-fit: cover; object-position: 62% 40%; }
 .hero-tag { left: 24px; bottom: 28px; font-size: 26px; }
 
 /* ---------- ticker ---------- */
