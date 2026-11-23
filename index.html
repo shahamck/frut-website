@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FRŪT — Real Fruit. Nothing Else.</title>
+<meta name="description" content="FRŪT is the modern frozen dessert from Ahmedabad. Real-fruit popsicles: 80% fruit based, refined sugar free, vegan.">
+<meta name="theme-color" content="#FEF4E8">
+<link rel="icon" href="assets/img/mascot.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Schibsted+Grotesk:wght@400..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=3">
+<script>try{if(sessionStorage.getItem("frut-intro")||matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("no-intro")}catch(e){}</script>
+</head>
+<body>
+
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader-inner">
+    <img class="loader-mascot" src="assets/img/mascot.jpg" alt="">
+    <span class="logo loader-logo"></span>
+    <span class="loader-line">Real fruit. Nothing else.</span>
+  </div>
+</div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<!-- Flower shape used to clip product photos (4-lobe "scoop" from the reference) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <clipPath id="flower" clipPathUnits="objectBoundingBox">
+      <circle cx=".3" cy=".3" r=".3"/><circle cx=".7" cy=".3" r=".3"/>
+      <circle cx=".3" cy=".7" r=".3"/><circle cx=".7" cy=".7" r=".3"/>
+      <circle cx=".5" cy=".5" r=".35"/>
+    </clipPath>
+  </defs>
+</svg>
+
+<header class="nav" id="nav">
+  <a href="#top" class="logo" aria-label="FRŪT home"></a>
+  <div class="nav-actions">
+    <a href="#cart" class="btn btn-sm hide-sm">Find the cart</a>
+    <button class="btn btn-sm" id="menuBtn" aria-expanded="false" aria-controls="menu">Menu</button>
+  </div>
+</header>
+
+<nav class="menu" id="menu" aria-label="Main" hidden>
+  <ul>
+    <li><a href="#lineup">The lineup</a></li>
+    <li><a href="#inside">What's inside</a></li>
+    <li><a href="#frutlets">Frūtlets</a></li>
+    <li><a href="#cart">Find the cart</a></li>
+    <li><a href="#social">Say hi</a></li>
+  </ul>
+  <p class="menu-foot">Real fruit. Nothing else. &nbsp;·&nbsp; Ahmedabad</p>
+</nav>
+
+<main id="top">
+
+  <!-- 01 HERO -->
+  <section class="hero">
+    <div class="hero-copy grid-bg">
+      <h1 class="display hero-title reveal" data-split>
+        If it’s not<br>
+        <span class="pill"><img src="assets/img/strawberry-pop.jpg" alt=""></span> real,<br>
+        we don’t<br>
+        freeze it.
+      </h1>
+      <p class="hero-sub reveal">FRŪT — the modern frozen dessert.<br>80% fruit based. Refined sugar free. Vegan.<br>Rolling around Ahmedabad.</p>
+      <img class="sticker sticker-mascot float" src="assets/img/mascot.jpg" alt="FRŪT mascot">
+      <span class="tag tag-yellow float-slow" style="--r:-12deg">100% real.<br>0% BS.</span>
+    </div>
+    <figure class="hero-media img-reveal">
+      <img src="assets/img/strawberry-crate.jpg" alt="A strawberry FRŪT popsicle on a crate of fresh strawberries">
+      <span class="tag tag-pink hero-tag" style="--r:8deg">Fresh off the crate</span>
+    </figure>
+  </section>
+
+  <!-- ticker -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span>80% fruit based</span><i>✦</i><span>Refined sugar free</span><i>✦</i><span>Vegan</span><i>✦</i><span>No artificial sweetener</span><i>✦</i><span>All natural ingredients</span><i>✦</i><span>Made in Ahmedabad</span><i>✦</i>
+      <span>80% fruit based</span><i>✦</i><span>Refined sugar free</span><i>✦</i><span>Vegan</span><i>✦</i><span>No artificial sweetener</span><i>✦</i><span>All natural ingredients</span><i>✦</i><span>Made in Ahmedabad</span><i>✦</i>
+    </div>
+  </div>
+
+  <!-- 02 STORY / ARC -->
+  <section class="story" id="story">
+    <p class="eyebrow reveal">How popsicles should be today</p>
+    <div class="arc-wrap reveal">
+      <svg class="arc" viewBox="0 80 1000 380" role="img" aria-labelledby="arcTitle">
+        <title id="arcTitle">Real fruit. Nothing else.</title>
+        <defs>
+          <!-- concentric arcs, centre (500,760) -->
+          <path id="arc1" d="M -26 568.5 A 560 560 0 0 1 1026 568.5"/>
+          <path id="arc2" d="M 87 610 A 440 440 0 0 1 913 610"/>
+        </defs>
+        <text class="arc-text"><textPath id="t1" href="#arc1" startOffset="50%" text-anchor="middle">Real fruit.</textPath></text>
+        <text class="arc-text"><textPath id="t2" href="#arc2" startOffset="50%" text-anchor="middle">Nothing else.</textPath></text>
+      </svg>
+    </div>
+    <figure class="story-img story-img-l reveal" style="--r:-6deg" data-speed=".22"><img src="assets/img/melon-fruit.jpg" alt="A ripe musk melon"></figure>
+    <figure class="story-img story-img-r reveal" style="--r:7deg" data-speed="-.18"><img src="assets/img/mango-ice.jpg" alt="A mango FRŪT popsicle resting on ice"></figure>
+    <p class="story-body reveal">We take real fruit, make it 80% of every bar, skip the refined sugar and anything artificial, and freeze it on a stick. That’s the whole recipe.</p>
+    <a href="#lineup" class="btn reveal">See the lineup</a>
+  </section>
+
+  <!-- full-bleed photo -->
+  <figure class="bleed img-reveal">
+    <img src="assets/img/guava-bite.jpg" alt="Someone biting into a FRŪT popsicle on a sunny terrace" data-parallax>
+  </figure>
+
+  <!-- 03 LINEUP -->
+  <section class="lineup" id="lineup" aria-roledescription="carousel" aria-label="FRŪT flavours">
+    <h2 class="display lineup-title" data-split="chars">Pick your frūt</h2>
+    <div class="lineup-stage">
+      <button class="side side-prev" id="prevSide" aria-label="Previous flavour"><img alt=""></button>
+      <div class="lineup-main">
+        <div class="flower"><img id="lineImg" alt=""></div>
+        <span class="tag tag-yellow lineup-label" id="lineName" style="--r:-8deg">Strawberry</span>
+        <button class="arrow arrow-l" id="prevBtn" aria-label="Previous flavour">←</button>
+        <button class="arrow arrow-r" id="nextBtn" aria-label="Next flavour">→</button>
+      </div>
+      <button class="side side-next" id="nextSide" aria-label="Next flavour"><img alt=""></button>
+    </div>
+    <p class="lineup-desc" id="lineDesc" aria-live="polite"></p>
+    <div class="dots" id="dots" role="tablist" aria-label="Choose a flavour"></div>
+  </section>
+
+  <!-- 04 INSIDE -->
+  <section class="inside" id="inside">
+    <div class="inside-text reveal">
+      <p class="eyebrow">What’s inside</p>
+      <p>Every FRŪT starts at the fruit cart, not the lab. Ripe fruit makes up 80% of each bar. The rest just helps it freeze right — never refined sugar, never artificial sweetener, never anything from an animal.</p>
+    </div>
+    <div class="ring-wrap reveal">
+      <svg class="ring" viewBox="0 0 500 500" aria-hidden="true">
+        <defs><path id="circ" d="M250,250 m-215,0 a215,215 0 1,1 430,0 a215,215 0 1,1 -430,0"/></defs>
+        <text class="ring-text"><textPath href="#circ">Only real fruit ✦ Only real fruit ✦ Only real fruit ✦ </textPath></text>
+      </svg>
+      <div class="ring-img"><img src="assets/img/strawberry-pink.jpg" alt="A single ripe strawberry floating on a pink background"></div>
+    </div>
+    <ul class="stats reveal">
+      <li><b data-count="80" data-suffix="%">80%</b><span>Fruit based</span></li>
+      <li><b data-count="0" data-from="99">0</b><span>Refined sugar</span></li>
+      <li><b data-count="100" data-suffix="%">100%</b><span>Vegan</span></li>
+      <li><b data-count="0" data-from="99">0</b><span>Artificial sweetener</span></li>
+    </ul>
+  </section>
+
+  <!-- 05 FRUTLETS -->
+  <section class="split" id="frutlets">
+    <div class="split-text">
+      <p class="eyebrow">Frūtlets</p>
+      <h2 class="display split-title reveal" data-split>Here to cool things down.</h2>
+      <p class="reveal">Our popsicles, boxed for sharing and gifting. Strawberry Starburst and friends — all natural ingredients, no artificial sweetener, made for parties, festivals and Tuesday nights.</p>
+      <a class="btn reveal" href="https://ig.me/m/frut.ind" target="_blank" rel="noopener">Ask about boxes</a>
+      <span class="tag tag-orange split-tag float-slow" style="--r:10deg">Gift it</span>
+    </div>
+    <figure class="split-media img-reveal">
+      <img src="assets/img/frutlets-box.jpg" alt="A box of Strawberry Starburst Frūtlets surrounded by fresh strawberries">
+    </figure>
+  </section>
+
+  <!-- 06 CART -->
+  <section class="cart" id="cart">
+    <div class="cart-head">
+      <span class="curve-top" aria-hidden="true"></span>
+      <h2 class="display cart-title reveal" data-split>Catch the cart<br>in Ahmedabad</h2>
+    </div>
+    <div class="cart-grid">
+      <div class="cart-count reveal">
+        <b class="display">01</b>
+        <span>Cart<br>on the road</span>
+      </div>
+      <div class="cart-route reveal" aria-hidden="true">
+        <svg viewBox="0 0 400 300" overflow="visible">
+          <defs>
+            <mask id="routeMask" maskUnits="userSpaceOnUse" x="-20" y="-20" width="440" height="340">
+              <path class="route-draw" d="M30 250 C 90 120, 170 260, 220 150 S 330 40, 370 70" fill="none" stroke="#fff" stroke-width="14" pathLength="1"/>
+            </mask>
+            <clipPath id="pinClip"><circle r="30"/></clipPath>
+          </defs>
+          <path id="routePath" d="M30 250 C 90 120, 170 260, 220 150 S 330 40, 370 70" fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="2 12" stroke-linecap="round" mask="url(#routeMask)"/>
+          <circle cx="30" cy="250" r="9" fill="currentColor"/>
+          <circle class="route-end" cx="370" cy="70" r="40" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <g class="route-pin" id="routePin">
+            <image href="assets/img/mascot.jpg" x="-30" y="-30" width="60" height="60" clip-path="url(#pinClip)"/>
+            <animateMotion id="routeMotion" dur="2.4s" begin="indefinite" fill="freeze" calcMode="spline" keyPoints="0;1" keyTimes="0;1" keySplines=".5 0 .2 1"><mpath href="#routePath"/></animateMotion>
+          </g>
+        </svg>
+      </div>
+      <div class="cart-info reveal">
+        <p>We’re a cart, so we move. Open the map for today’s spot, or follow along on Instagram to see where we’re parking next.</p>
+        <a class="btn" href="https://maps.app.goo.gl/swi6vEzVbHP8VVP56" target="_blank" rel="noopener">Open in Maps</a>
+      </div>
+      <figure class="cart-photo cart-photo-a reveal" style="--r:-5deg" data-speed=".14"><img src="assets/img/neon-sign.jpg" alt="The glowing FRŪT neon sign with the mascot"></figure>
+      <figure class="cart-photo cart-photo-b reveal" style="--r:6deg" data-speed="-.12"><img src="assets/img/mango-crate.jpg" alt="A mango FRŪT popsicle on a crate of mangoes"></figure>
+    </div>
+  </section>
+
+  <!-- 07 SOCIAL -->
+  <section class="social" id="social">
+    <div class="bubble b1" data-speed=".18" data-mouse="28"><img src="assets/img/logo-mango.jpg" alt=""></div>
+    <div class="bubble b2" data-speed="-.1" data-mouse="-18"><img src="assets/img/strawberry-close.jpg" alt=""></div>
+    <div class="bubble b3" data-speed=".26" data-mouse="34"><img src="assets/img/melon-pop.jpg" alt=""></div>
+    <div class="bubble b4" data-speed="-.2" data-mouse="-26"><img src="assets/img/logo-guava.jpg" alt=""></div>
+    <div class="bubble b5" data-speed=".12" data-mouse="16"><img src="assets/img/logo-banana.jpg" alt=""></div>
+    <div class="bubble b6" data-speed="-.24" data-mouse="-30"><img src="assets/img/diwali-frutlets.jpg" alt=""></div>
+    <h2 class="display social-title reveal" data-split>Got a craving?<br>We’ve got a<br>popsicle for that.</h2>
+    <a class="btn btn-light reveal" href="https://www.instagram.com/frut.ind/" target="_blank" rel="noopener">
+      <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.4" cy="6.6" r="1.3" fill="currentColor"/></svg>
+      Follow @frut.ind
+    </a>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <span class="logo logo-lg" aria-label="FRŪT"></span>
+      <p>Follow us for new flavours, drops, and where the cart is parked today.</p>
+      <ul class="footer-social">
+        <li><a href="https://www.instagram.com/frut.ind/" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://maps.app.goo.gl/swi6vEzVbHP8VVP56" target="_blank" rel="noopener">Google Maps</a></li>
+      </ul>
+    </div>
+    <ul class="footer-nav">
+      <li><a href="#lineup">Lineup</a></li>
+      <li><a href="#inside">What’s inside</a></li>
+      <li><a href="#frutlets">Frūtlets</a></li>
+      <li><a href="#cart">Find the cart</a></li>
+    </ul>
+  </div>
+  <form class="news" id="news">
+    <p>Get the next flavour before everyone else.</p>
+    <div class="news-row">
+      <label><span class="sr">Name</span><input name="name" placeholder="Name" autocomplete="name"></label>
+      <label><span class="sr">Email</span><input name="email" type="email" placeholder="Email" autocomplete="email" required></label>
+      <button class="btn btn-light" type="submit">Submit</button>
+    </div>
+    <p class="news-ok" id="newsOk" hidden>You’re on the list. Stay cool. 🥭</p>
+  </form>
+  <div class="footer-bottom">
+    <span>© 2026 FRŪT. All rights reserved.</span>
+    <span>Ahmedabad, India</span>
+    <a href="#top">Back to top ↑</a>
+  </div>
+</footer>
+
+<script src="main.js?v=3"></script>
+</body>
+</html>
